@@ -1,0 +1,13 @@
+[Unit]
+Description=Load the USB Video Class driver for webcams
+Wants=network-online.target
+After=network-online.target systemd-modules-load.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/srv/frame-uvc/load.sh
+TimeoutStartSec=15min
+
+[Install]
+WantedBy=multi-user.target
